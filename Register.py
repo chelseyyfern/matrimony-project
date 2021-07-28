@@ -43,7 +43,7 @@ def regUser():
     print(bpassword,end='--')
     print("Register Now")
     
-    sqlquery="INSERT INTO USER (userId,name,gender,age,nationality,hobby1,hobby2,hobby3,email,username,password) VALUES (2,'{}','{}',{},'{}','{}','{}','{}','{}','{}','{}')".format(bname,bgender,bage,bnationality,bHobby1,bHobby2,bHobby3,bemail,busername,bpassword);
+    sqlquery="INSERT INTO USER (userId,name,gender,age,nationality,hobby1,hobby2,hobby3,email,username,password) VALUES (3,'{}','{}',{},'{}','{}','{}','{}','{}','{}','{}')".format(bname,bgender,bage,bnationality,bHobby1,bHobby2,bHobby3,bemail,busername,bpassword);
     print(sqlquery)
 
     try:
