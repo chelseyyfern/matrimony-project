@@ -43,17 +43,28 @@ def regUser():
     print(bpassword,end='--')
     print("Register Now")
     
-    #sqlquery= "insert into USER values('" + bname +"','"+bgender+"','" + bage +"','" + bnationality +"','" + bHobby1 +"','" + bHobby2 +"','" + bHobby3 +"','" + bemail +"','" + busername +"','" + bpassword +"','YES');"
-    sqlquery="INSERT INTO USER VALUES ('{}','{}',{},'{}','{}','{}','{}','{}','{}','{}')".format(bname,bgender,bage,bnationality,bHobby1,bHobby2,bHobby3,bemail,busername,bpassword);
+    sqlquery="INSERT INTO USER (userId,name,gender,age,nationality,hobby1,hobby2,hobby3,email,username,password) VALUES (2,'{}','{}',{},'{}','{}','{}','{}','{}','{}','{}')".format(bname,bgender,bage,bnationality,bHobby1,bHobby2,bHobby3,bemail,busername,bpassword);
     print(sqlquery)
 
     try:
         cursor.execute(sqlquery)
         mydb.commit()
         messagebox.showinfo("New Profile Created!")
-    except:
-        messagebox.showinfo("Something went wrong!")
-    window=Tk()
+        print()
+        
+    except mysql.connector.Error as error:
+        connection.rollback()
+        print("Failed to insert into MySQL table {}".format(error))
+        
+    
+    finally:
+        if mydb.is_connected():
+            cursor.close()
+            mydb.close()
+            print("MySQL connection is closed")
+    
+        
+    #window=Tk()
     window.destroy()
 
 def userReg():
